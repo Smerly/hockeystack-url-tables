@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        "table": "400px 100px 100px 100px 100px 100px 100px 100px"
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
