@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { PageRowProps } from "@/app/interfaces";
 import { calculateScore } from "@/app/utils/calculateScore";
 
-export default function PageRow({ pageData, lowestScore, highestScore }: PageRowProps) {
+export default function PageRow({ pageData, lowestScore, highestScore, sort, setSort }: PageRowProps) {
 
 	// State Variables
 
@@ -41,14 +41,13 @@ export default function PageRow({ pageData, lowestScore, highestScore }: PageRow
 			<>
 				<div className="flex flex-row bg-gray-800 p-2">Url</div>
 
-				<button className="flex flex-row justify-center bg-gray-800 p-2">Score</button>
-				<button className="flex flex-row justify-center bg-gray-800 p-2">Scroll</button>
-				<button className="flex flex-row justify-center bg-gray-800 p-2">Time</button>
-				<button className="flex flex-row justify-center bg-gray-800 p-2">Bounce</button>
-				<button className="flex flex-row justify-center bg-gray-800 p-2">Enters</button>
-				<button className="flex flex-row justify-center bg-gray-800 p-2">Exits</button>
-				<button className="flex flex-row justify-center bg-gray-800 p-2">Page Views</button>
-				<button className="flex flex-row justify-center bg-gray-800 p-2">Visitors</button>
+				<button onClick={() => setSort('Score')} className={`flex flex-row justify-center bg-gray-800 p-2 ${sort === 'Score' && 'bg-gray-600'}`}>Score</button>
+				<button onClick={() => setSort('Scroll')} className={`flex flex-row justify-center bg-gray-800 p-2 ${sort === 'Scroll' && 'bg-gray-600'}`}>Scroll</button>
+				<button onClick={() => setSort('Bounce')} className={`flex flex-row justify-center bg-gray-800 p-2 ${sort === 'Bounce' && 'bg-gray-600'}`}>Bounce</button>
+				<button onClick={() => setSort('Enters')} className={`flex flex-row justify-center bg-gray-800 p-2 ${sort === 'Enters' && 'bg-gray-600'}`}>Enters</button>
+				<button onClick={() => setSort('Exits')} className={`flex flex-row justify-center bg-gray-800 p-2 ${sort === 'Exits' && 'bg-gray-600'}`}>Exits</button>
+				<button onClick={() => setSort('Page Views')} className={`flex flex-row justify-center bg-gray-800 p-2 ${sort === 'Page Views' && 'bg-gray-600'}`}>Page Views</button>
+				<button onClick={() => setSort('Visitors')} className={`flex flex-row justify-center bg-gray-800 p-2 ${sort === 'Visitors' && 'bg-gray-600'}`}>Visitors</button>
 			</>
 		)
 	}
@@ -61,7 +60,7 @@ export default function PageRow({ pageData, lowestScore, highestScore }: PageRow
 
 				<div className='flex flex-row justify-center p-2' style={{ color: getColorForScore()}}>{score}</div>
 				<div className="flex flex-row justify-center p-2">{pageData.avgScrollPercentage}%</div>
-				<div className="flex flex-row justify-center">{}</div>
+				{/* It doesn't look like a time property is defined in Page, nor are there any pieces of data that sums it up. */}
 				<div className="flex flex-row justify-center">{pageData.bounceCount}</div>
 				<div className="flex flex-row justify-center">{pageData.startsWithCount}</div>
 				<div className="flex flex-row justify-center">{pageData.endsWithCount}</div>

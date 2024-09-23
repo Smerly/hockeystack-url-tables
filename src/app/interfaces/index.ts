@@ -20,6 +20,8 @@ export interface PageRowProps {
     pageData: Page | 'header'
     highestScore: number;
     lowestScore: number;
+    sort: string
+    setSort: Dispatch<SetStateAction<string>>;
 }
 
 export interface TablePageButtonsProps {
