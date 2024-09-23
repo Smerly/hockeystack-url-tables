@@ -4999,6 +4999,16 @@
 			"endsWithCount": 1,
 			"avgScrollPercentage": 68,
 			"totalPageviewCount": 50
+		},
+		{
+			"url": "hockeystack.com/blog/product-adoption-tools/",
+			"totalCount": 1,
+			"totalVisitorCount": 1,
+			"bounceCount": 1,
+			"startsWithCount": 1,
+			"endsWithCount": 1,
+			"avgScrollPercentage": 68,
+			"totalPageviewCount": 50
 		}
 	]
 }

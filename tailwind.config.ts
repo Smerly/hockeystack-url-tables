@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        "table": "400px 100px 100px 100px 100px 100px 100px 100px"
+        "table": "400px 150px 150px 150px 150px 150px 150px 150px 150px"
       },
       colors: {
         background: "var(--background)",

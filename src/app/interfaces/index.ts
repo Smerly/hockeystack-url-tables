@@ -18,10 +18,12 @@ export interface Page {
 
 export interface PageRowProps {
     pageData: Page | 'header'
+    highestScore: number;
+    lowestScore: number;
 }
 
 export interface TablePageButtonsProps {
     tablePage: number;
     setTablePage: Dispatch<SetStateAction<number>>;
-    pageLength: number;
+    highestPage: number;
 }

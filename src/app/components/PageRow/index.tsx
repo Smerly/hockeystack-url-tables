@@ -1,23 +1,54 @@
 "use client"
 
+import { useEffect, useState } from "react";
 import { PageRowProps } from "@/app/interfaces";
+import { calculateScore } from "@/app/utils/calculateScore";
 
-export default function PageRow({ pageData }: PageRowProps) {
+export default function PageRow({ pageData, lowestScore, highestScore }: PageRowProps) {
+
+	// State Variables
+
+	const [score, setScore] = useState(0)
+
+	// Functions
+
+	const getColorForScore = (): string => {
+		const middleScore = (highestScore + lowestScore) / 2;
+	
+		if (score >= middleScore) {
+		// Green for scores closer to the highest score
+		const greenIntensity = Math.floor((255 * (score - middleScore)) / (highestScore - middleScore));
+		return `rgb(100, 255, ${greenIntensity + 25})`;
+		} else {
+		// Red for scores closer to the lowest score
+		const redIntensity = Math.floor((255 * (middleScore - score)) / (middleScore - lowestScore));
+		return `rgb(255, ${redIntensity + 25}, 100)`;
+		}
+	};
+
+	// Effect Handling
+
+	useEffect(() => {
+		if (typeof pageData === 'object') {
+			setScore(calculateScore(pageData))
+		}
+	}, [pageData])
 
 	// Row Contents
 
 	const headerContent = () => {
 		return (
 			<>
-				<div className="border border-gray-400 bg-gray-800">Url</div>
-				<div className="border border-gray-400 bg-gray-800">Scroll</div>
+				<div className="flex flex-row bg-gray-800 p-2">Url</div>
 
-				<div className="border border-gray-400 bg-gray-800">Time</div>
-				<div className="border border-gray-400 bg-gray-800">Bounce</div>
-				<div className="border border-gray-400 bg-gray-800">Enters</div>
-				<div className="border border-gray-400 bg-gray-800">Exits</div>
-				<div className="border border-gray-400 bg-gray-800">Page Views</div>
-				<div className="border border-gray-400 bg-gray-800">Visitors</div>
+				<button className="flex flex-row justify-center bg-gray-800 p-2">Score</button>
+				<button className="flex flex-row justify-center bg-gray-800 p-2">Scroll</button>
+				<button className="flex flex-row justify-center bg-gray-800 p-2">Time</button>
+				<button className="flex flex-row justify-center bg-gray-800 p-2">Bounce</button>
+				<button className="flex flex-row justify-center bg-gray-800 p-2">Enters</button>
+				<button className="flex flex-row justify-center bg-gray-800 p-2">Exits</button>
+				<button className="flex flex-row justify-center bg-gray-800 p-2">Page Views</button>
+				<button className="flex flex-row justify-center bg-gray-800 p-2">Visitors</button>
 			</>
 		)
 	}
@@ -25,17 +56,20 @@ export default function PageRow({ pageData }: PageRowProps) {
 	const pageContent = () => {
 		if (typeof pageData === 'object') return (
 			<>
-				<div className="">{pageData.url}</div>
-				<div className="">{pageData.avgScrollPercentage}%</div>
+				{/* Urls are long without the ability to wrap. On overflow, the remaining content can be scrolled through */}
+				<div className="flex flex-row max-w-96 max-h-6 whitespace-nowrap overflow-x-scroll overflow-y-scroll mt-1">{pageData.url}</div>
 
-				<div className="">{}</div>
-				<div className="">{pageData.bounceCount}</div>
-				<div className="">{pageData.startsWithCount}</div>
-				<div className="">{pageData.endsWithCount}</div>
-				<div className="">{pageData.totalPageviewCount}</div>
-				<div className="">{pageData.totalVisitorCount}</div>
+				<div className='flex flex-row justify-center p-2' style={{ color: getColorForScore()}}>{score}</div>
+				<div className="flex flex-row justify-center p-2">{pageData.avgScrollPercentage}%</div>
+				<div className="flex flex-row justify-center">{}</div>
+				<div className="flex flex-row justify-center">{pageData.bounceCount}</div>
+				<div className="flex flex-row justify-center">{pageData.startsWithCount}</div>
+				<div className="flex flex-row justify-center">{pageData.endsWithCount}</div>
+				<div className="flex flex-row justify-center">{pageData.totalPageviewCount}</div>
+				<div className="flex flex-row justify-center">{pageData.totalVisitorCount}</div>
 			</>
 		)
+		return <header> Loading... </header>
 	}
 
 	// component renderer
