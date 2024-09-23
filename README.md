@@ -1,5 +1,9 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Hockey Stack URL data visualization tables
+
+Data visualization driven tables, built for tracking analytics or other metrics from HockeyStack domains
+
 ## Getting Started
 
 First, run the development server:
@@ -16,21 +20,20 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Reflections on the Project
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+I had lots of fun building the table visualizing this page data from Hockey Stack. In the time span of 2-3 hours, I had tradeoffs due to the limitations of time constraints. I was successfully able to build the full application with all of the features. I was able to save time while handling edge case like url row remainders (say there were 51 url rows, you need 6 pages to allow for the last url row to render) by handling the pages (by 10) by handling it with state rather than separate routes. The components in the project are built to be resuable for tables with different columns and data. 
 
-## Learn More
+The one feature left off was ascendingly sorted data. The app currently allows for only descending. With the amount of time I had left, I was able to allow for only descending or only ascending, because with both ascending and descending features, I have to handle state for double clicks and rendering an icon that shows the user which it is sorted by. With this time, I chose to sort descending data because it displayed more important data for the purposes of analytics. 
 
-To learn more about Next.js, take a look at the following resources:
+## What I would do with more time
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Dynamically render the row elements in PageRow for cleaner code, and memoize elements that takes lots of memory, but stay relatively static
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Finish sort filter feature to allow for ascending
 
-## Deploy on Vercel
+3. Transfer certain operations and state to a global scope, like with Redux or Zustand to prevent prop drilling and general clean code in future implementations
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Fully implement designs, such as a chevron with animations for up and down
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. Make the application more responsive on changes
