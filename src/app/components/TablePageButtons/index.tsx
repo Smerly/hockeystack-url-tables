@@ -23,7 +23,7 @@ export default function TablePageButtons({ tablePage, setTablePage, highestPage 
             <div className="mr-5 w-5 h-5">
                 {tablePage > 1 && (
                     <button onClick={decrementTablePage} className="mx-3 text-lg">
-                        -
+                        <
                     </button>
                 )}
             </div>
@@ -33,7 +33,7 @@ export default function TablePageButtons({ tablePage, setTablePage, highestPage 
             <div className="mr-5 w-5 h-5">
                 {tablePage < highestPage && (
                     <button onClick={incrementTablePage} className="mx-3 text-lg">
-                        +
+                        >
                     </button>
                 )} 
             </div>
