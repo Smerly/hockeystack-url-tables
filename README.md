@@ -4,9 +4,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 Data visualization driven tables, built for tracking analytics or other metrics from HockeyStack domains
 
-## Getting Started
-
-First, run the development server:
+## How to Run the Table
 
 ```bash
 npm run dev
