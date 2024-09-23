@@ -22,6 +22,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 I had lots of fun building the table visualizing this page data from Hockey Stack. In the time span of 2-3 hours, I had tradeoffs due to the limitations of time constraints. I was successfully able to build the full application with all of the features. I was able to save time while handling edge case like url row remainders (say there were 51 url rows, you need 6 pages to allow for the last url row to render) by handling the pages (by 10) by handling it with state rather than separate routes. The components in the project are built to be resuable for tables with different columns and data. 
 
+I noticed that there is a "time" column in the demo. However, the data from the json file did not include a time property, and I could not reasonably find a calculation from the existing properties that would be able to logically create a time property. As a result, I did not include it in the project.
+
 The one feature left off was ascendingly sorted data. The app currently allows for only descending. With the amount of time I had left, I was able to allow for only descending or only ascending, because with both ascending and descending features, I have to handle state for double clicks and rendering an icon that shows the user which it is sorted by. With this time, I chose to sort descending data because it displayed more important data for the purposes of analytics. 
 
 ## What I would do with more time
